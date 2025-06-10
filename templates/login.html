@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <title>Login - Mintel Telkom University</title>
+  <style>
+
+  .main-content {
+  overflow: hidden;
+  display: center;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 80px); /* 100% tinggi layar dikurangi tinggi header */
+  padding: 40px 20px;
+}
+
+    * {
+      box-sizing: border-box;
+    }
+
+   body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-image: url('{{ url_for('static', filename='bg.png') }}');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+}
+
+
+    .header {
+      background-color: #c00;
+      color: white;
+      padding: 20px;
+      text-align: left;
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .login-container {
+      background-color: rgba(255, 255, 255, 0.95);
+      padding: 40px;
+      margin: 60px auto;
+      width: 100%;
+      max-width: 400px;
+      border-radius: 12px;
+      box-shadow: 0 0 25px rgba(0, 0, 0, 0.15);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 25px;
+      color: #c00;
+    }
+
+    h3 {
+      text-align: center;
+      margin-bottom: 25px;
+      color: black;
+    }
+
+    input[type="text"], input[type="password"] {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 16px;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color: #c00;
+      color: white;
+      border: none;
+      font-size: 16px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #900;
+    }
+
+    .error {
+      color: red;
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    .logo {
+      display: block;
+      margin: 0 auto 10px auto;
+      width: 80px;
+    }
+
+    .container {
+  backdrop-filter: blur(8px);
+  background-color: rgba(255, 255, 255, 0.05); /* semi transparan */
+  border-radius: 10px;
+  padding: 2rem;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+
+.chatbox-faq {
+  background: rgba(255, 255, 255, 0.8);
+  padding: 2rem;
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  width: 50%;
+  max-width: 600px;
+  margin: 100px auto 0 auto; /* ini memusatkan box secara horizontal */
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.chatbox-faq h2 {
+  text-align: center;
+  margin-bottom: 1rem;
+  color: #b00;
+  font-weight: bold;
+}
+
+/* Styling untuk <details> dan <summary> */
+.chatbox-faq details {
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  border-radius: 5px;
+  background-color: rgba(255,255,255,0.6);
+  cursor: pointer;
+}
+
+.chatbox-faq summary {
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+.chatbox-faq summary::-webkit-details-marker {
+  color: #b00;
+}
+
+
+  </style>
+
+</head>
+<body>
+  <div class="header">
+    <img src="static/custicon.png" style="height:30px; vertical-align: middle;">
+    &nbsp; Mintel Chatbot
+  </div>
+
+<div class="container">
+
+  <div class="chatbox-faq">
+    <h2>FAQ</h2>
+    <details>
+      <summary>Bagaimana cara login?</summary>
+      <p>Pastikan anda terdaftar sebagai <b>mahasiswa</b> Telkom University Surabaya</p>
+    </details>
+    <details>
+      <summary>Siapa yang bisa mengakses chatbot ini?</summary>
+      <p><b>Mahasiswa</b> Telkom University Surabaya.</p>
+    </details>
+    <details>
+      <summary>Chatbot ini bisa apa saja?</summary>
+      <p>Memberikan informasi seputar <b>jadwal kuliah</b>, dan <b>FAQ kampus.</b></p>
+    </details>
+  </div>
+
+  <!-- login form di sini -->
+  <div class="main-content">
+    <div class="login-container">
+      <img class="logo" src="{{ url_for('static', filename='TEL.png') }}" alt="Telkom Logo">
+      <h2>Login</h2>
+      <h3>Silahkan isi Username dan Password</h3>
+      <form method="post">
+        <input type="text" name="username" placeholder="Username" required>
+        <input type="password" name="password" placeholder="Password" required>
+        <button type="submit">Login</button>
+      </form>
+      {% if error %}
+        <p class="error">{{ error }}</p>
+      {% endif %}
+    </div>
+  </div>
+  </div>
+</body>
+
+</html>
